@@ -6,18 +6,25 @@ import { Logo } from "@/components/Logo";
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const featuredEquipment = await prisma.equipment.findMany({
-    where: { featured: true, available: true },
-    take: 6,
-    orderBy: { createdAt: "desc" },
-  });
+  let featuredEquipment: Awaited<ReturnType<typeof prisma.equipment.findMany>> = [];
+  let stats = { equipos: 0, reservas: 0 };
 
-  const stats = {
-    equipos: await prisma.equipment.count(),
-    reservas: await prisma.reservation.count({
-      where: { status: "COMPLETED" },
-    }),
-  };
+  try {
+    featuredEquipment = await prisma.equipment.findMany({
+      where: { featured: true, available: true },
+      take: 6,
+      orderBy: { createdAt: "desc" },
+    });
+
+    stats = {
+      equipos: await prisma.equipment.count(),
+      reservas: await prisma.reservation.count({
+        where: { status: "COMPLETED" },
+      }),
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
 
   return (
     <div>

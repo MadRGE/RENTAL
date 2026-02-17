@@ -16,9 +16,15 @@ export default async function EquipoDetailPage({
 }: {
   params: { id: string };
 }) {
-  const equipo = await prisma.equipment.findUnique({
-    where: { id: params.id },
-  });
+  let equipo;
+  try {
+    equipo = await prisma.equipment.findUnique({
+      where: { id: params.id },
+    });
+  } catch (error) {
+    console.error("Error fetching equipment:", error);
+    notFound();
+  }
 
   if (!equipo) {
     notFound();
