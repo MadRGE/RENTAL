@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String        @id @default(cuid())
+  name         String
+  email        String        @unique
+  password     String
+  phone        String?
+  role         String        @default("CLIENT") // CLIENT | ADMIN
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  reservations Reservation[]
+}
+
+model Equipment {
+  id           String        @id @default(cuid())
+  name         String
+  brand        String
+  description  String
+  category     String        // CONSOLE | CONTROLLER | MIXER | SPEAKER | LIGHTING | OTHER
+  image        String?
+  pricePerHour Float
+  pricePerDay  Float
+  available    Boolean       @default(true)
+  featured     Boolean       @default(false)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  reservations Reservation[]
+}
+
+model Reservation {
+  id          String   @id @default(cuid())
+  userId      String
+  equipmentId String
+  startDate   DateTime
+  endDate     DateTime
+  totalPrice  Float
+  status      String   @default("PENDING") // PENDING | CONFIRMED | CANCELLED | COMPLETED
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User      @relation(fields: [userId], references: [id])
+  equipment   Equipment @relation(fields: [equipmentId], references: [id])
+  payment     Payment?
+}
+
+model Payment {
+  id            String      @id @default(cuid())
+  reservationId String      @unique
+  amount        Float
+  status        String      @default("PENDING") // PENDING | COMPLETED | FAILED | REFUNDED
+  method        String?     // CASH | TRANSFER | CARD
+  reference     String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  reservation   Reservation @relation(fields: [reservationId], references: [id])
+}
