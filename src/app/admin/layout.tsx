@@ -40,8 +40,8 @@ export default function AdminLayout({
       {/* Sidebar */}
       <aside className="w-64 bg-dark-900 border-r border-dark-700 p-4 hidden lg:block">
         <div className="mb-8">
-          <h2 className="text-white font-bold text-lg">Panel Admin</h2>
-          <p className="text-dark-500 text-sm">Gestión de alquileres</p>
+          <h2 className="text-primary-400 font-bold text-lg">Des⚡Controladoras</h2>
+          <p className="text-dark-500 text-sm">Panel de administración</p>
         </div>
         <nav className="space-y-1">
           {adminLinks.map((link) => (

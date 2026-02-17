@@ -4,7 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "DJ Rental - Alquiler de Equipos DJ",
+  title: "Rental Des⚡Controladoras - Alquiler de Equipos DJ",
   description:
     "Alquilá consolas, controladoras, mixers y más para tus eventos. Los mejores equipos DJ a tu alcance.",
 };

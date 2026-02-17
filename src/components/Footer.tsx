@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "./Logo";
 
 export function Footer() {
   return (
@@ -6,17 +7,12 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">DJ</span>
-              </div>
-              <span className="text-xl font-bold text-white">
-                DJ <span className="text-primary-400">Rental</span>
-              </span>
+            <div className="mb-4">
+              <Logo size="sm" />
             </div>
             <p className="text-dark-400 text-sm">
-              Los mejores equipos DJ para tus eventos. Consolas, controladoras,
-              mixers y más.
+              Alquiler de consolas, controladoras y equipos DJ para tus eventos
+              y fiestas.
             </p>
           </div>
           <div>
@@ -51,15 +47,23 @@ export function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Contacto</h3>
             <ul className="space-y-2 text-dark-400 text-sm">
-              <li>WhatsApp: +54 11 1234-5678</li>
-              <li>Email: info@djrental.com</li>
-              <li>Instagram: @djrental</li>
+              <li>
+                <a
+                  href="https://wa.me/541131929239"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary-400 transition-colors"
+                >
+                  WhatsApp: 11 3192-9239
+                </a>
+              </li>
+              <li>Instagram: @rental.descontroladoras</li>
             </ul>
           </div>
         </div>
         <div className="border-t border-dark-700 mt-8 pt-8 text-center text-dark-500 text-sm">
-          &copy; {new Date().getFullYear()} DJ Rental. Todos los derechos
-          reservados.
+          &copy; {new Date().getFullYear()} Rental Des⚡Controladoras. Todos
+          los derechos reservados.
         </div>
       </div>
     </footer>

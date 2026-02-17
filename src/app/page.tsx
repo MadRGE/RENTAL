@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { EquipoCard } from "@/components/EquipoCard";
+import { Logo } from "@/components/Logo";
 
 export const dynamic = "force-dynamic";
 
@@ -23,26 +24,34 @@ export default async function HomePage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-900/20 via-dark-950 to-dark-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-600/10 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-500/10 via-transparent to-transparent" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-36">
           <div className="max-w-3xl">
-            <span className="inline-block badge bg-primary-600/20 text-primary-400 mb-6 text-sm px-4 py-1.5">
-              Alquiler de equipos profesionales
-            </span>
+            <div className="mb-8">
+              <Logo size="lg" />
+            </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Los mejores equipos
-              <span className="text-primary-400"> DJ</span> para tu evento
+              Alquilá los mejores equipos
+              <span className="text-primary-400"> DJ</span>
             </h1>
             <p className="text-dark-300 text-lg sm:text-xl mb-8 max-w-2xl">
-              Consolas, controladoras, mixers y más. Alquilá equipos
-              profesionales por hora o por día para tus fiestas y eventos.
+              Consolas, controladoras, mixers y más. Equipos profesionales por
+              hora o por día para tus fiestas y eventos.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/equipos" className="btn-primary text-center text-lg">
+              <Link
+                href="/equipos"
+                className="btn-primary text-center text-lg"
+              >
                 Ver Equipos
               </Link>
-              <a href="#como-funciona" className="btn-secondary text-center text-lg">
-                Cómo funciona
+              <a
+                href="https://wa.me/541131929239"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary text-center text-lg"
+              >
+                Consultá por WhatsApp
               </a>
             </div>
           </div>
@@ -104,9 +113,9 @@ export default async function HomePage() {
               },
               {
                 step: "3",
-                title: "Pagá y disfrutá",
+                title: "Retirá y disfrutá",
                 description:
-                  "Pagá de forma segura y retirá o recibí tu equipo el día acordado.",
+                  "Coordiná el retiro o delivery del equipo y disfrutá de tu evento.",
                 icon: (
                   <path
                     strokeLinecap="round"
@@ -121,7 +130,7 @@ export default async function HomePage() {
                 key={item.step}
                 className="bg-dark-900 border border-dark-700 rounded-xl p-6 text-center"
               >
-                <div className="w-14 h-14 bg-primary-600/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-14 h-14 bg-primary-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <svg
                     className="w-7 h-7 text-primary-400"
                     fill="none"
@@ -187,9 +196,19 @@ export default async function HomePage() {
           <p className="text-dark-300 text-lg mb-8">
             Reservá ahora y asegurá tu equipo para la fecha que necesitás.
           </p>
-          <Link href="/equipos" className="btn-accent text-lg">
-            Reservar ahora
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/equipos" className="btn-primary text-lg">
+              Reservar ahora
+            </Link>
+            <a
+              href="https://wa.me/541131929239"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-accent text-lg"
+            >
+              Escribinos por WhatsApp
+            </a>
+          </div>
         </div>
       </section>
     </div>
